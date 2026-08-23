@@ -1,0 +1,48 @@
+<%
+  const brand = typeof brandName !== 'undefined' ? brandName : 'NOVA';
+  const serviceList = typeof services !== 'undefined' ? services : [
+    { title: 'Brend strategiyasi', text: 'Bozordagi o‘rningizni belgilashdan tortib, brend ovozigacha.' },
+    { title: 'Web-dizayn va development', text: 'Tezkor, tushunarli va mijozni xaridga olib keladigan saytlar.' },
+    { title: 'Raqamli marketing', text: 'Reklama byudjetini o‘lchab bo‘ladigan biznes natijasiga aylantiramiz.' }
+  ];
+  const statList = typeof stats !== 'undefined' ? stats : [
+    { value: '120+', label: 'muvaffaqiyatli loyiha' }, { value: '8', label: 'yillik tajriba' }, { value: '24/7', label: 'doimiy qo‘llab-quvvatlash' }
+  ];
+%>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="<%= brand %> — biznesingiz uchun raqamli yechimlar" />
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle : `${brand} | Biznes yechimlar` %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="container header">
+    <a class="logo" href="#home"><%= brand %><span>®</span></a>
+    <nav aria-label="Asosiy menyu"><a href="#services">Xizmatlar</a><a href="#about">Biz haqimizda</a><a href="#results">Natijalar</a></nav>
+    <a class="header-cta" href="#contact">Bog‘lanish <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="container hero-content"><p class="tag"><i></i> BIZNESINGIZ UCHUN RAQAMLI HAMKOR</p><h1>G‘oyalarni <em>natijaga</em><br />aylantiramiz.</h1><div class="hero-bottom"><p><%= typeof heroText !== 'undefined' ? heroText : 'Biz brendlar uchun zamonaviy strategiya, dizayn va texnologik yechimlar yaratamiz.' %></p><a class="primary-btn" href="#contact">Loyihani boshlash <span>→</span></a></div></div>
+      <div class="container hero-stats"><% statList.forEach((stat) => { %><div><strong><%= stat.value %></strong><p><%= stat.label %></p></div><% }) %></div>
+    </section>
+
+    <section class="container intro" id="about"><p class="section-label">01 — BIZNING YONDASHUV</p><div><h2>Oddiy emas, <br /><em>ahamiyatli</em> yechimlar.</h2><p class="large-copy">Biz sizning maqsadingizni chuqur tushunamiz va biznesingiz o‘sishi uchun aniq strategiya yaratamiz.</p></div></section>
+
+    <section class="services" id="services"><div class="container"><p class="section-label">02 — XIZMATLARIMIZ</p><div class="service-list"><% serviceList.forEach((service, index) => { %><article><span>0<%= index + 1 %></span><div><h3><%= service.title %></h3><p><%= service.text %></p></div><a href="#contact" aria-label="<%= service.title %> haqida">↗</a></article><% }) %></div></div></section>
+
+    <section class="container results" id="results"><div class="results-title"><p class="section-label">03 — NATIJALAR</p><h2>Raqamlar<br /><em>gapiradi.</em></h2></div><div class="results-grid"><article><strong>3.4<span>x</span></strong><p>Mijozlarimizning o‘rtacha daromad o‘sishi</p></article><article><strong>92<span>%</span></strong><p>Uzoq muddatli hamkorlikka qaytadigan mijozlar</p></article><article><strong>48<span>soat</span></strong><p>Ichida loyihaning birinchi aniq rejasini olasiz</p></article></div></section>
+
+    <section class="cta" id="contact"><div class="container"><p class="section-label">04 — BIRGA ISHLAYLIK</p><h2>Keyingi katta<br />qadamingizni <em>boshlang.</em></h2><a class="round-button" href="mailto:<%= typeof email !== 'undefined' ? email : 'hello@nova.uz' %>">Yozing<br />bizga <span>↗</span></a><p class="email"><%= typeof email !== 'undefined' ? email : 'hello@nova.uz' %> &nbsp; • &nbsp; <%= typeof phone !== 'undefined' ? phone : '+998 90 123 45 67' %></p></div></section>
+  </main>
+  <footer class="container"><a class="logo" href="#home"><%= brand %><span>®</span></a><p>© 2026 <%= brand %> Studio. Barcha huquqlar himoyalangan.</p><a href="#home">Yuqoriga ↑</a></footer>
+</body>
+</html>
