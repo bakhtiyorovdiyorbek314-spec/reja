@@ -1,53 +1,79 @@
-//22-DARS Asynchronus functionlarni organamiz
-console.log("Jack Ma maslahatlari ");
+//MITTASK-1
 
-const list = [
-  "yaxshi talaba boling", //0-20
-  "tog'ri boshliq tanlang va ko'proq xato qiling", //20-30
-  "o'zingizni ishlaringizni boshlang", //30-40
-  "siz kuchli bolgan narsalarni qiling", //40-50
-  "yoshlarga investitsiya qiling", //50-60
-  "endi dam oling,foydasi yoq endi", //60~
-];
+//Masala:
+// Harf sifatida kiritilgan birinchi parametr,
+// kiritilgan ikkinchi parametr tarkibida nechta ekanligini qaytaruvchi
+// Funktsiya tuzing
 
-async function adviceMe(a) {
-  if (typeof a !== "number") throw new Error("insert a number");
-  else if (a <= 20) return list[0];
-  else if (a > 20 && a <= 30) return list[1];
-  else if (a > 30 && a <= 40) return list[2];
-  else if (a > 40 && a <= 50) return list[3];
-  else if (a > 50 && a <= 60) return list[4];
-  else {
-    // return list[5];
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(list[5]);
-      }, 3000);
-    });
+// Masalan: countLetter("e", "engineer")
+// 'engineer' so'zi tarkibida 'e' harfi 3 marotaba takrorlanganligi uchun
+// 3 sonini qaytaradi
+
+//YECHIM:
+
+function nechta(letter, text) {
+  let count = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === letter) {
+      count++;
+    }
   }
+
+  return count;
 }
+console.log(nechta("a", "banana"));
 
-//then/catch orqali call qilamiz
+//22-DARS Asynchronus functionlarni organamiz
+// console.log("Jack Ma maslahatlari ");
 
-console.log("passed 0");
+// const list = [
+//   "yaxshi talaba boling", //0-20
+//   "tog'ri boshliq tanlang va ko'proq xato qiling", //20-30
+//   "o'zingizni ishlaringizni boshlang", //30-40
+//   "siz kuchli bolgan narsalarni qiling", //40-50
+//   "yoshlarga investitsiya qiling", //50-60
+//   "endi dam oling,foydasi yoq endi", //60~
+// ];
 
-adviceMe(25)
-  .then((data) => {
-    console.log("javob:", data);
-  }) //then data bn ishlaydi
-  .catch((err) => {
-    console.log("ERROR:", err);
-  }); //catch err bn ishlaydi
+// async function adviceMe(a) {
+//   if (typeof a !== "number") throw new Error("insert a number");
+//   else if (a <= 20) return list[0];
+//   else if (a > 20 && a <= 30) return list[1];
+//   else if (a > 30 && a <= 40) return list[2];
+//   else if (a > 40 && a <= 50) return list[3];
+//   else if (a > 50 && a <= 60) return list[4];
+//   else {
+//     // return list[5];
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         resolve(list[5]);
+//       }, 3000);
+//     });
+//   }
+// }
 
-console.log("passed 1");
+// //then/catch orqali call qilamiz
 
-adviceMe(35)
-  .then((data) => {
-    console.log("javob:", data);
-  }) //then data bn ishlaydi
-  .catch((err) => {
-    console.log("ERROR:", err);
-  }); //catch err bn ishlaydi
+// console.log("passed 0");
+
+// adviceMe(25)
+//   .then((data) => {
+//     console.log("javob:", data);
+//   }) //then data bn ishlaydi
+//   .catch((err) => {
+//     console.log("ERROR:", err);
+//   }); //catch err bn ishlaydi
+
+// console.log("passed 1");
+
+// adviceMe(35)
+//   .then((data) => {
+//     console.log("javob:", data);
+//   }) //then data bn ishlaydi
+//   .catch((err) => {
+//     console.log("ERROR:", err);
+//   }); //catch err bn ishlaydi
 
 // then.catch -XULOSA : Node.js birinchi synchorus larni keyin asynchronus larni ishga tushurib berdadi
 //sinxron function lar immediately ishga tushuvchi bolgani uchun ular 1-chiqadi
