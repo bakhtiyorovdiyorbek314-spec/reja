@@ -1,4 +1,25 @@
-//MITTASK-1
+//MITTASK-B
+
+//Masala:
+
+// Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
+// MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.password[i]
+
+// YECHIM:
+function countDigits(password) {
+  let hisob = 0;
+
+  for (let i = 0; i < password.length; i++) {
+    if (password[i] >= "0" && password[i] <= "9") {
+      hisob++;
+    }
+  }
+
+  return hisob;
+}
+console.log(countDigits("ad2a54y79wet0sfgb9"));
+
+//MITTASK-A
 
 //Masala:
 // Harf sifatida kiritilgan birinchi parametr,
@@ -9,7 +30,7 @@
 // 'engineer' so'zi tarkibida 'e' harfi 3 marotaba takrorlanganligi uchun
 // 3 sonini qaytaradi
 
-//YECHIM:
+// YECHIM:
 
 function nechta(letter, text) {
   let count = 0;
