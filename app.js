@@ -4,7 +4,7 @@ const app = express();
 const res = require("express/lib/response");
 
 //MongoDB
-const db = require("./server");
+const db = require("./server").db();
 
 //1 Kirish code
 app.use(express.static("public"));
