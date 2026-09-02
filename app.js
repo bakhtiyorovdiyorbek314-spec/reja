@@ -5,6 +5,7 @@ const res = require("express/lib/response");
 
 //MongoDB
 const db = require("./server").db();
+const mongodb = require("mongodb");
 
 //1 Kirish code
 app.use(express.static("public"));
@@ -30,7 +31,7 @@ app.set("view engine", "ejs");
 // });
 app.post("/create-item", (req, res) => {
   console.log("STEP2: FRONTENDdan BACKENDga kirish");
-  console.log(req.body);
+  console.log("user entered /create-item");
   const new_reja = req.body.reja;
   console.log("STEP3:  BACKENDdan DATABASEga jonash");
   db.collection("plans");
@@ -41,6 +42,19 @@ app.post("/create-item", (req, res) => {
     res.json(data.ops[0]);
     // res.redirect("/");
   });
+});
+
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    function (err, data) {
+      res.json({ state: "success" });
+    },
+  );
+
+  // console.log(id);
+  // res.end("done");
 });
 
 app.get("/", function (req, res) {
