@@ -29,30 +29,30 @@ app.set("view engine", "ejs");
 //   res.render("biznes");
 // });
 app.post("/create-item", (req, res) => {
-  console.log("user entered /create-item");
+  console.log("STEP2: FRONTENDdan BACKENDga kirish");
   console.log(req.body);
   const new_reja = req.body.reja;
+  console.log("STEP3:  BACKENDdan DATABASEga jonash");
+  db.collection("plans");
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.end("something went wrong");
-    } else {
-      res.end("successfully added");
-    }
+    console.log("STEP4:   DATABASEdan BACKENDga qaytish");
+    // console.log(data.ops);
+    console.log("STEP5:  BACKENDdan FRONTENDga javob qaytarish");
+    res.json(data.ops[0]);
+    // res.redirect("/");
   });
 });
 
 app.get("/", function (req, res) {
-  console.log("user entered /");
+  console.log("STEP2: FRONTENDdan BACKENDga kirish");
+  console.log("STEP3:  BACKENDdan DATABASEga jonash");
   db.collection("plans")
     .find()
     .toArray((err, data) => {
-      if (err) {
-        console.log(err);
-        res.end("something went wrong");
-      } else {
-        res.render("reja", { items: data });
-      }
+      console.log("STEP4:   DATABASEdan BACKENDga qaytish");
+      console.log(data);
+      console.log("STEP5:  BACKENDdan FRONTENDga javob qaytarish");
+      res.render("reja", { items: data });
     });
 });
 
