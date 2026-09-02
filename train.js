@@ -1,3 +1,47 @@
+//TASK-C
+// Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
+// MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
+
+const moment = require("moment");
+
+class Shop {
+  constructor(cola, pepsi, fanta) {
+    this.cola = cola;
+    this.pepsi = pepsi;
+    this.fanta = fanta;
+  }
+
+  realTime() {
+    return moment().format("HH:mm");
+  }
+
+  qoldiq() {
+    return `Hozir dokonda ${this.realTime()}da  ${this.cola}ta cola , ${this.pepsi} ta pepsi ,${this.fanta} ta fanta mavjud`;
+  }
+
+  sotish(product, quantity) {
+    if (this[product] < quantity) {
+      throw new Error(`${product} is low in stock`);
+    } else {
+      this[product] -= quantity;
+      return `hozir ${this.realTime()} da ${quantity} ta ${product} sotildi`;
+    }
+  }
+
+  olish(product, quantity) {
+    this[product] += quantity;
+    return `hozir ${this.realTime()} da ${quantity} ta ${product} sotib olindi  `;
+  }
+}
+const shop = new Shop(20, 30, 40);
+
+console.log(shop.qoldiq());
+console.log(shop.sotish("cola", 5));
+console.log(shop.olish("fanta", 7));
+console.log(shop.sotish("pepsi", 13));
+console.log(shop.qoldiq());
+// console.log(shop.sotish("cola", 60));
+
 //MITTASK-B
 
 //Masala:
@@ -6,18 +50,18 @@
 // MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.password[i]
 
 // YECHIM:
-function countDigits(password) {
-  let hisob = 0;
+// function countDigits(password) {
+//   let hisob = 0;
 
-  for (let i = 0; i < password.length; i++) {
-    if (password[i] >= "0" && password[i] <= "9") {
-      hisob++;
-    }
-  }
+//   for (let i = 0; i < password.length; i++) {
+//     if (password[i] >= "0" && password[i] <= "9") {
+//       hisob++;
+//     }
+//   }
 
-  return hisob;
-}
-console.log(countDigits("ad2a54y79wet0sfgb9"));
+//   return hisob;
+// }
+// console.log(countDigits("ad2a54y79wet0sfgb9"));
 
 //MITTASK-A
 
@@ -32,18 +76,18 @@ console.log(countDigits("ad2a54y79wet0sfgb9"));
 
 // YECHIM:
 
-function nechta(letter, text) {
-  let count = 0;
+// function nechta(letter, text) {
+//   let count = 0;
 
-  for (let i = 0; i < text.length; i++) {
-    if (text[i] === letter) {
-      count++;
-    }
-  }
+//   for (let i = 0; i < text.length; i++) {
+//     if (text[i] === letter) {
+//       count++;
+//     }
+//   }
 
-  return count;
-}
-console.log(nechta("a", "banana"));
+//   return count;
+// }
+// console.log(nechta("a", "banana"));
 
 //22-DARS Asynchronus functionlarni organamiz
 // console.log("Jack Ma maslahatlari ");
