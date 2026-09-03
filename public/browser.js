@@ -1,6 +1,6 @@
 console.log("FrontEnd ishga tushdi");
 
-function itemTemplate(data) {
+function itemTemplate(item) {
   return `
     <li
           class="list-group-item list-group-item-info d-flex align-items-center justify-content-between"
@@ -23,9 +23,10 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     .post("/create-item", { reja: createField.value })
     .then((response) => {
       document
-        .getElemetnById("item-list")
+        .getElementById("item-list")
         .insertAdjacentHTML("beforeend", itemTemplate(response.data));
-      ((createField.value = ""), createField.focus());
+      createField.value = "";
+      createField.focus();
     })
     .catch((err) => {
       console.log("Qaytadan urunib koring");
